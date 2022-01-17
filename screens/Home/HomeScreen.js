@@ -54,7 +54,12 @@ export default function HomeScreen(props) {
             {moment(Date.now()).format('dddd') == item.day ? 
             (
             <Animatable.View animation="pulse" easing="ease-out" iterationCount="infinite">
-            <TouchableOpacity style={styles.workoutCover}  onPress={() => {props.navigation.navigate('DayWorkOut')}} >
+            <TouchableOpacity style={styles.workoutCover}  onPress={() => {
+                props.navigation.navigate('DayWorkOut',{
+                    day:item.day,
+                    coverImage:item.coverImage
+                })
+                }} >
             <View style={styles.workoutInfo}>
                 <Text style={styles.dayName}>{item.day}</Text>
                 <Text></Text>
@@ -64,7 +69,10 @@ export default function HomeScreen(props) {
             )
             :
             (
-            <TouchableOpacity style={styles.workoutCover}  onPress={() => {props.navigation.navigate('DayWorkOut')}} >
+            <TouchableOpacity style={styles.workoutCover}  onPress={() => {props.navigation.navigate('DayWorkOut',{
+                day:item.day,
+                coverImage:item.coverImage
+            })}} >
             <View style={styles.workoutInfo}>
                 <Text style={styles.dayName}>{item.day}</Text>
                 <Text></Text>
