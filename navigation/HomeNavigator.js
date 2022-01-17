@@ -10,6 +10,7 @@ import EditScreen from '../screens/Home/EditScreen';
 
 import { HomeScreenOptions } from '../screens/Home/HomeScreen';
 import { ProfileScreenOptions } from '../screens/Home/ProfileScreen';
+import { EditProfileScreenOptions } from '../screens/Home/EditScreen';
 
 
 const Stack = createStackNavigator();
@@ -35,7 +36,7 @@ export default function HomeNavigator() {
         <Stack.Screen
          name="Edit"
          component={EditScreen}
-        //  options={ProfileScreenOptions} 
+         options={EditProfileScreenOptions} 
          />
       </Stack.Navigator>
     )
