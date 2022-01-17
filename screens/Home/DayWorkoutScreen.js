@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Button, Image, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { AntDesign } from '@expo/vector-icons'; 
 import Colors from '../../constants/Colors';
 
@@ -29,13 +29,33 @@ export default function DayWorkoutScreen(props) {
                 <TouchableOpacity style={styles.button}>
                     <Text style={styles.buttonText}>Start Now</Text>
                 </TouchableOpacity>
-                
             </View>
             </ImageBackground>
-            
-            <View>
 
-            </View>
+            {/* Chart List */}
+            <TouchableOpacity style={styles.chartContainer}>
+                <Image source={{uri:'https://media.istockphoto.com/vectors/dumbbell-icon-vector-id528606326?k=20&m=528606326&s=612x612&w=0&h=_lf4vg-DeCBhrDjvRtdyVI3CWhlwhcmkfcVX7ah-NCA='}} style={styles.chartImage} />
+                <TouchableOpacity style={styles.chartInfo}>
+                    <Text style={styles.chartTitle}>Machine Shoulder Press</Text>
+                    <Text>8 - 8 - 8</Text>
+                </TouchableOpacity>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.chartContainer}>
+                <Image source={{uri:'https://media.istockphoto.com/vectors/dumbbell-icon-vector-id528606326?k=20&m=528606326&s=612x612&w=0&h=_lf4vg-DeCBhrDjvRtdyVI3CWhlwhcmkfcVX7ah-NCA='}} style={styles.chartImage} />
+                <TouchableOpacity style={styles.chartInfo}>
+                    <Text style={styles.chartTitle}>Machine Shoulder Press</Text>
+                    <Text>8 - 8 - 8</Text>
+                </TouchableOpacity>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.chartContainer}>
+                <Image source={{uri:'https://media.istockphoto.com/vectors/dumbbell-icon-vector-id528606326?k=20&m=528606326&s=612x612&w=0&h=_lf4vg-DeCBhrDjvRtdyVI3CWhlwhcmkfcVX7ah-NCA='}} style={styles.chartImage} />
+                <TouchableOpacity style={styles.chartInfo}>
+                    <Text style={styles.chartTitle}>Machine Shoulder Press</Text>
+                    <Text>8 - 8 - 8</Text>
+                </TouchableOpacity>
+            </TouchableOpacity>
 
         </View>
     )
@@ -94,6 +114,25 @@ const styles = StyleSheet.create({
     },
     dayContainer:{
         padding:18
+    },
+    chartImage:{
+        width:50,
+        height:50,
+        borderRadius:100
+    },
+    turns:{
+        flexDirection:'row'
+    },
+    chartContainer:{
+        width:'100%',
+        flexDirection:'row',
+        margin:10
+    },
+    chartInfo:{
+        marginLeft:10,
+    },
+    chartTitle:{
+        fontSize:18,
+        fontWeight:'bold'
     }
-
 })
