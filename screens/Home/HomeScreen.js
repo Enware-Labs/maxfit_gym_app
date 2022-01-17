@@ -1,31 +1,47 @@
 import React from 'react'
-import { Image, StyleSheet, Text, TouchableOpacity, View,ImageBackground,FlatList } from 'react-native'
+import { Image, StyleSheet, Text, TouchableOpacity, View,ImageBackground,FlatList, Button } from 'react-native'
 import { FontAwesome5 } from '@expo/vector-icons'; 
 import Colors from '../../constants/Colors';
+import * as Animatable from 'react-native-animatable';
+import moment from 'moment'
 
 export default function HomeScreen(props) {
 
     const DAYS = [
         {
-            day:'Monday'
+            id:'1',
+            day:'Monday',
+            coverImage:'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'
         },
         {
-            day:'Tuesday'
+            id:'2',
+            day:'Tuesday',
+            coverImage:'https://images.unsplash.com/photo-1519505907962-0a6cb0167c73?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'
         },
         {
-            day:'Wenesday'
+            id:'3',
+            day:'Wenesday',
+            coverImage:'https://images.unsplash.com/photo-1532029837206-abbe2b7620e3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'
         },
         {
-            day:'Thursday'
+            id:'4',
+            day:'Thursday',
+            coverImage:'https://images.unsplash.com/photo-1434754205268-ad3b5f549b11?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=874&q=80'
         },
         {
-            day:'Friday'
+            id:'5',
+            day:'Friday',
+            coverImage:'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=775&q=80'
         },
         {
-            day:'Saturday'
+            id:'6',
+            day:'Saturday',
+            coverImage:'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'
         },
         {
-            day:'Sunday'
+            id:'7',
+            day:'Sunday',
+            coverImage:'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'
         },
         
     ]
@@ -33,13 +49,29 @@ export default function HomeScreen(props) {
 
     const renderItem = ({item}) => {
         return (
-            <ImageBackground source={{uri:'https://scontent.fcmb7-1.fna.fbcdn.net/v/t1.6435-9/208859872_203169565143798_8794676154000761999_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=09cbfe&_nc_eui2=AeGzS0RYIPqaGquaNIWACrE20_Q2S3nENy_T9DZLecQ3L9hmojHDul6EJPoCKFilG9psKSVI0nKQljOlfPGS2v2h&_nc_ohc=anlW6cSFcEEAX-OdN0Z&tn=CvZTsjQbeLrMYJCw&_nc_ht=scontent.fcmb7-1.fna&oh=00_AT_-8hrX6Dm_cBrYzBT6ixvsU86B2kD_zZFws28M_A33IQ&oe=620B58BF'}} resizeMode="cover" imageStyle={{borderRadius:15,opacity:1}} style={styles.workout} >
+            <ImageBackground source={{uri:item.coverImage}} resizeMode="cover" imageStyle={{borderRadius:15,opacity:1}} style={styles.workout} >
+
+            {moment(Date.now()).format('dddd') == item.day ? 
+            (
+            <Animatable.View animation="pulse" easing="ease-out" iterationCount="infinite">
             <TouchableOpacity style={styles.workoutCover}  onPress={() => {props.navigation.navigate('DayWorkOut')}} >
             <View style={styles.workoutInfo}>
                 <Text style={styles.dayName}>{item.day}</Text>
                 <Text></Text>
             </View>
             </TouchableOpacity>
+            </Animatable.View>
+            )
+            :
+            (
+            <TouchableOpacity style={styles.workoutCover}  onPress={() => {props.navigation.navigate('DayWorkOut')}} >
+            <View style={styles.workoutInfo}>
+                <Text style={styles.dayName}>{item.day}</Text>
+                <Text></Text>
+            </View>
+            </TouchableOpacity>)
+            
+            }
             </ImageBackground>
 
         )
@@ -56,7 +88,7 @@ export default function HomeScreen(props) {
             <FlatList
                 data={DAYS}
                 renderItem={renderItem}
-                keyExtractor={item => item.day}
+                keyExtractor={item => item.id}
                 numColumns={2}
                 style={{marginBottom:100,marginLeft:10}}
             />
@@ -73,7 +105,7 @@ export const HomeScreenOptions = (navData) =>({
             <TouchableOpacity>
                 <FontAwesome5 name="cloud-moon" size={18} color="black" style={styles.headerrighticons} />
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navData.navigation.navigate('Profile')}>
                 <FontAwesome5 name="user-alt" size={18} color="black" style={styles.headerrighticons} />
             </TouchableOpacity>
         </View>

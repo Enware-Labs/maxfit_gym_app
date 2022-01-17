@@ -4,9 +4,12 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import HomeScreen from '../screens/Home/HomeScreen';
 import DayWorkoutScreen from '../screens/Home/DayWorkoutScreen';
+import ProfileScreen from '../screens/Home/ProfileScreen'
+import EditScreen from '../screens/Home/EditScreen';
 
 
 import { HomeScreenOptions } from '../screens/Home/HomeScreen';
+import { ProfileScreenOptions } from '../screens/Home/ProfileScreen';
 
 
 const Stack = createStackNavigator();
@@ -23,6 +26,16 @@ export default function HomeNavigator() {
          name="DayWorkOut"
          component={DayWorkoutScreen}
         //  options={HomeScreenOptions} 
+         />
+        <Stack.Screen
+         name="Profile"
+         component={ProfileScreen}
+         options={ProfileScreenOptions} 
+         />
+        <Stack.Screen
+         name="Edit"
+         component={EditScreen}
+        //  options={ProfileScreenOptions} 
          />
       </Stack.Navigator>
     )
