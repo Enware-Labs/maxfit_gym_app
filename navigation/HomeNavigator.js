@@ -6,12 +6,14 @@ import HomeScreen from '../screens/Home/HomeScreen';
 import DayWorkoutScreen from '../screens/Home/DayWorkoutScreen';
 import ProfileScreen from '../screens/Home/ProfileScreen'
 import EditScreen from '../screens/Home/EditScreen';
+import DayWorkoutPlayScreen from '../screens/Home/DayWorkoutPlayScreen';
 
 
 import { HomeScreenOptions } from '../screens/Home/HomeScreen';
 import { ProfileScreenOptions } from '../screens/Home/ProfileScreen';
 import { EditProfileScreenOptions } from '../screens/Home/EditScreen';
 import { DailyWorkoutScreenOptions } from '../screens/Home/DayWorkoutScreen'
+import { DayWorkoutPlayScreenOptions } from '../screens/Home/DayWorkoutPlayScreen';
 
 
 const Stack = createStackNavigator();
@@ -38,6 +40,11 @@ export default function HomeNavigator() {
          name="Edit"
          component={EditScreen}
          options={EditProfileScreenOptions} 
+         />
+        <Stack.Screen
+         name="WorkoutPlay"
+         component={DayWorkoutPlayScreen}
+         options={DayWorkoutPlayScreenOptions} 
          />
       </Stack.Navigator>
     )

@@ -26,7 +26,7 @@ export default function DayWorkoutScreen(props) {
                     <Text style={styles.helpStyle}>If you want to change the workouts schedules, consult with your trainer</Text>
                 </View>
 
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity style={styles.button} onPress={() => props.navigation.navigate('WorkoutPlay')}>
                     <Text style={styles.buttonText}>Start Now</Text>
                 </TouchableOpacity>
             </View>
